@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    tools:context=".ui.dashboard.DashboardFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logobrain"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ask_remember"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/ask_size"
+        />
+
+    <EditText
+        android:id="@+id/recordatorio_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="@string/example_remember"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ask_when"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/ask_size"
+        />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tuesday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/wednesday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/thursday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/friday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sunday"
+                android:textSize="@dimen/ask_size"
+                />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/days_margin"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ask_time"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/ask_size"
+        />
+
+    <EditText
+        android:id="@+id/recordatorio_hora"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="datetime"
+        android:hint="@string/set_time"
+        />
+
+    <Button
+        android:id="@+id/recordatorio_boton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add note"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>
