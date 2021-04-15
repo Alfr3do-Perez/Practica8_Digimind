@@ -12,7 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import perez.alfredo.mydigimind.ui.dashboard.DashboardFragment
 import perez.alfredo.mydigimind.ui.home.HomeFragment
 
-class MainActivity : AppCompatActivity(), Comunicador {
+class MainActivity : AppCompatActivity() {
 
     var carrito:Carrito = Carrito();
 
@@ -30,32 +30,6 @@ class MainActivity : AppCompatActivity(), Comunicador {
 
 
 
-    }
-
-    override fun enviaroRecordatorio(recordatorio: Recordatorio) {
-        val bundle = Bundle();
-        bundle.putSerializable("recordatorio",recordatorio);
-        val transaction = supportFragmentManager.beginTransaction()
-        var fragmentoTablero= HomeFragment();
-        fragmentoTablero.arguments = bundle;
-
-        transaction.replace(R.id.host_fragment, fragmentoTablero);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-
-
-        /*val transaccion = supportFragmentManager.beginTransaction()
-        var fragmento = Fragment()
-        when (op) {
-            1 -> fragmento = Fragment_primero()
-            2 -> fragmento = Fragment_segundo()
-            3 -> fragmento = Fragment_tercero()
-        }
-
-        transaccion.replace(R.id.contenedor, fragmento)
-        transaccion.addToBackStack(null)
-        transaccion.commit()*/
     }
 
 

@@ -19,7 +19,13 @@ import perez.alfredo.mydigimind.Recordatorio
 
 class HomeFragment : Fragment() {
 
+    private var adaptador:AdaptadorRecordatorio?=null;
     private lateinit var homeViewModel: HomeViewModel
+
+    companion object{
+        var tasks = ArrayList<Recordatorio>();
+        var firts = true;
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -29,63 +35,65 @@ class HomeFragment : Fragment() {
         homeViewModel =
                 ViewModelProvider(this).get(HomeViewModel::class.java)
         val root:View = inflater.inflate(R.layout.fragment_home, container, false)
-        //homeViewModel.text.observe(viewLifecycleOwner, Observer {
 
-            if(arguments != null ){
-                var recordatorio = requireArguments().getSerializable("recordatorio");
-                recordatorios.add(recordatorio as Recordatorio);
-            }
+        if(firts){llenarTasks(); firts = false;}
 
-            Log.d("prueba", "Se abrio el home");
-            var gridview:GridView = root.findViewById(R.id.tabla_recordatorios) as GridView;
-            var adapter:RecordatoriosAdapter = RecordatoriosAdapter(root.context, recordatorios);
-            gridview.adapter = adapter;
-        //})
+
+        adaptador = AdaptadorRecordatorio(root.context, tasks);
+        val gridView:GridView = root.findViewById(R.id.tabla_recordatorios);
+        gridView.adapter = adaptador;
+
         return root
     }
 
+    fun llenarTasks(){
+        tasks.add(Recordatorio("Practica 1", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 2", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 3", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 4", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 5", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 6", arrayListOf("Monday","Saturday"), "17:30"));
+        tasks.add(Recordatorio("Practica 7", arrayListOf("Monday","Saturday"), "17:30"));
+    }
 
-    public class RecordatoriosAdapter: BaseAdapter {
-        var recordatorios = ArrayList<Recordatorio>();
-        var context: Context?= null;
+    private class AdaptadorRecordatorio: BaseAdapter {
+        var tasks = ArrayList<Recordatorio>();
+        var contexto: Context? = null
 
-        constructor(context: Context, recordatorios: ArrayList<Recordatorio>){
-            this.context = context;
-            this.recordatorios = recordatorios
+        constructor(contexto: Context, tasks:ArrayList<Recordatorio>){
+            this.contexto = contexto;
+            this.tasks = tasks;
         }
 
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            var recordatorio = recordatorios[position];
-            var inflator = LayoutInflater.from(context);
-            var vista = inflator.inflate(R.layout.recordatorio, null);
-
-            var nombre_recordatorio:TextView = vista.findViewById(R.id.nombre_recordatorio) as TextView;
-            var dias_recordatorio:TextView = vista.findViewById(R.id.dias_recordatorio) as TextView;
-            var hora_recordatorio:TextView = vista.findViewById(R.id.hora_recordatorio) as TextView;
-
-            nombre_recordatorio.setText(recordatorio.nombre);
-            dias_recordatorio.setText(recordatorio.dias);
-            hora_recordatorio.setText(recordatorio.tiempo);
-
-            return vista
+        override fun getCount(): Int {
+            return tasks.size;
         }
 
         override fun getItem(position: Int): Any {
-            return recordatorios[position];
+            return tasks[position];
         }
 
         override fun getItemId(position: Int): Long {
             return position.toLong();
         }
 
-        override fun getCount(): Int {
-            return recordatorios.size;
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            var task = tasks[position];
+            var inflater = LayoutInflater.from(contexto);
+            var vista = inflater.inflate(R.layout.recordatorio, null);
+
+            var textViewNombre = vista.findViewById(R.id.nombre_recordatorio) as TextView;
+            var textViewDias = vista.findViewById(R.id.dias_recordatorio) as TextView;
+            var textViewTiempo = vista.findViewById(R.id.hora_recordatorio) as TextView;
+
+            textViewNombre.setText(task.nombre);
+            textViewDias.setText(task.dias.toString());
+            textViewTiempo.setText(task.tiempo);
+
+            return vista;
         }
 
 
     }
 
-    companion object {
-        var recordatorios = ArrayList<Recordatorio>();
-    }
 }
